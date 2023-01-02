@@ -22,6 +22,7 @@ export default createGlobalStyle`
         --main-background-color:#0A0A0A;
         --second-background-color:#162227;
         --third-background-color:#FCF3EE;
+        --btn-background-color:#0F171A;
         --mask-background:rgba(0,0,0,0.5);
     }
 `;
