@@ -23,6 +23,9 @@ export default createGlobalStyle`
         --second-background-color:#162227;
         --third-background-color:#FCF3EE;
         --btn-background-color:#0F171A;
+        --card-description-color:#EFEEE6;
+        --default-image-color:#D9D9D9;
+        --mouseEnter-card-color:#263238;
         --mask-background:rgba(0,0,0,0.5);
     }
 `;
