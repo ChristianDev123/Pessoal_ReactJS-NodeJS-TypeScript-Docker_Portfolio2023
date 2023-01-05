@@ -24,9 +24,10 @@ export const Wrapper = styled.section`
     "img img title"
     "img img links"
     "desc desc desc";
-    grid-template-columns: .8fr .8fr 15rem;
+    grid-template-columns: .8fr .8fr 20rem;
     grid-auto-rows: 1fr 1.5fr 1fr;
     color:#fff;
+    z-index:3;
 `;
 
 export const WrapperTitle = styled.div`
@@ -49,20 +50,23 @@ export const WrapperImage = styled.div`
 
 export const WrapperDescription = styled.div`
     grid-area: desc;
+    padding:2rem 1rem;
 `;
 
 export const Title = styled.h3`
     text-align:center;
     width:100%;
+    font-size:2rem;
 `;
 
 export const Link = styled.a`
     display:block;
     text-align:center;
+    font-size:1.2rem;
 `;
 
 export const Description = styled.p`
-
+    font-size:1.2rem;
 `;
 
 export const Image = styled.img`
