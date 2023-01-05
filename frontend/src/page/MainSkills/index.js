@@ -3,7 +3,7 @@ import GenericCard from "../../components/GenericCard";
 import { CardSection, Container, Title, TitleSection, TitleWrapper } from "./style";
 import DogTest from '../../assets/dogtest.jpg'
 
-export default function Certifications(){
+export default function MainSkills(){
     const [data, setData] = useState([
         {image:DogTest, title:'Teste', links:['teste','teste','teste'], description:"Teste du teste de teste"},
         {image:DogTest, title:'Teste', links:['teste','teste','teste'], description:"Teste du teste de teste"},
