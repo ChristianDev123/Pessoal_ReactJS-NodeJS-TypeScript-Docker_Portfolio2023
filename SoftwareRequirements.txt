@@ -1,0 +1,25 @@
+- informações a serem enviadas:
+	- Pagina de Formações e Projetos:
+		- imagem principal;
+		- pdf - com imagens;
+		- descrição do projeto / formação;
+		- Nome do Projeto
+		- links para acesso - array - guardado em json na base de dados;
+		- Específicamente para projetos:
+			- consumo de api - github;
+	- Pagina de Principais Habilidades:
+		- imagem principal;
+		- tempo de experiência;
+		- nome da tecnologia;
+		- descrição da tecnologia;
+	- Pagina de Certificações:
+		- imagem principal;
+		- título da certificação;
+		- links no LinkedIn;
+		- descrição da certificação;
+- regras de negócios:
+	- Página de Projetos:
+		- consumo de API Github;
+		- Mesclar imagens de tecnologias com os repositórios;
+		- Links de repositório e deploy;
+	

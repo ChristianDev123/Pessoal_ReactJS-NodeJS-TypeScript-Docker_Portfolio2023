@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+  portfolio_frontend:
+    image: portfolio_frontend
+    ports:
+      - 80:80
+    environment:
+      - REACT_APP_BACKEND_HOST=localhost
+  portfolio_backend:
+    image: portfolio_backend
+    ports:
+      - 3000:3000
+    restart: always
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_PWD=${DB_PWD}
+      - DB_NAME=${DB_NAME}
+      - DB_HOST=mysql
+      - DB_PORT=${DB_PORT}
+      - DB_DIALECT=${DB_DIALECT}
+      - NODE_ENV=production
+  mysql:
+    image: mariadb
+    environment:
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PWD}
+      - MYSQL_ROOT_PASSWORD=${DB_PWD}
+      - MYSQL_DATABASE=${DB_NAME}
+    ports:
+      - 3306:3306
+    volumes:
+      - data_portfolio:/var/lib/mysql
+volumes:
+  data_portfolio: {}

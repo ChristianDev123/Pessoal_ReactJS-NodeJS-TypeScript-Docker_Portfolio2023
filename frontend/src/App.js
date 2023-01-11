@@ -4,6 +4,7 @@ import MainPage from './page/MainPage';
 import Formations from './page/Formations';
 import Certifications from './page/Certifications';
 import MainSkills from './page/MainSkills';
+import Projects from './page/Projects';
 
 export default function App(){
   return(
@@ -14,6 +15,7 @@ export default function App(){
         <Route path='/formations' element={<Formations/>}/>
         <Route path="/certifications" element={<Certifications/>}/>
         <Route path="/mainskills" element={<MainSkills/>}/>
+        <Route path="/projects" element={<Projects/>}/>
       </Routes>
     </>
   );
