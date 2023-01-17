@@ -9,8 +9,8 @@ const MainSkills = mainskills();
 const Projects = projects();
 
 export interface IModal{
-    save(modal:typeof Certifications):string;
-    save(modal:typeof Formations):string;
-    save(modal:typeof MainSkills):string;
-    save(modal:typeof Projects):string;
+    save(modal:typeof Certifications):number;
+    save(modal:typeof Formations):number;
+    save(modal:typeof MainSkills):number;
+    save(modal:typeof Projects):number;
 }

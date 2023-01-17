@@ -16,7 +16,7 @@ export class MainSkills extends Post {
         this.timeExperience = timeExperience;
     }
 
-    public save(model: typeof MainSkillsModel ): string {
+    public save(model: typeof MainSkillsModel ): number {
         try{
             const obj = {
                 mainImage:this.MainImage,
@@ -25,11 +25,11 @@ export class MainSkills extends Post {
                 links:this.Links,
                 timeExperience:this.TimeExperience,
             }
-            model.create(obj);
-            return '[Sucess] New Skill add sucessfully';
+            async()=>{await model.create(obj)};
+            return 200;
         }
         catch{
-            return "[ERROR] Can't save this skill";   
+            return 500;   
         }
     }
 

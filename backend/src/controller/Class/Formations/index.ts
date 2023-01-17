@@ -16,7 +16,7 @@ export class Formations extends Post {
         this.pdfImages = pdfImages;
     }
 
-    public save(model:typeof FormationsModel ): string {
+    public save(model:typeof FormationsModel ): number {
         try{
             const obj = {
                 mainImage:this.MainImage,
@@ -24,12 +24,14 @@ export class Formations extends Post {
                 description:this.Description,
                 links:this.Links,
                 pdfImages:this.pdfImages,
-            }
-            model.create(obj);
-            return '[Sucess] New Skill add sucessfully';
+            };
+            
+            async ()=>{ await model.create(obj) };
+
+            return 200;
         }
         catch{
-            return "[ERROR] Can't save this skill";   
+            return 500;   
         }
     }
 

@@ -16,7 +16,7 @@ export class Certifications extends Post {
         this.pdfImages = pdfImages;
     }
 
-    public save(model:typeof CertificationsModel ): string {
+    public save(model:typeof CertificationsModel ):number {
         try{
             const obj = {
                 mainImage:this.MainImage,
@@ -25,11 +25,11 @@ export class Certifications extends Post {
                 links:this.Links,
                 pdfImages:this.pdfImages,
             }
-            model.create(obj);
-            return '[Sucess] New Skill add sucessfully';
+            async()=>{ await model.create(obj)};
+            return 200;
         }
         catch{
-            return "[ERROR] Can't save this skill";   
+            return 500;   
         }
     }
 

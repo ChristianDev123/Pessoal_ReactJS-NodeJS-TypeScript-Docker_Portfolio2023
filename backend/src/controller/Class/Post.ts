@@ -1,4 +1,13 @@
 import { IModal } from "./InterfaceModal";
+import certifications from "../../models/certifications";
+import formations from "../../models/formations";
+import mainskills from "../../models/mainskills";
+import projects from "../../models/projects";
+
+const Certifications = certifications();
+const Formations = formations();
+const MainSkills = mainskills();
+const Projects = projects();
 
 export abstract class Post implements IModal {
     protected mainImage:string;
@@ -18,7 +27,10 @@ export abstract class Post implements IModal {
         this.links = links;
     }
 
-    public abstract save(model:any):string;
+    public abstract save(modal:typeof Certifications):number;
+    public abstract save(modal:typeof Formations):number;
+    public abstract save(modal:typeof MainSkills):number;
+    public abstract save(modal:typeof Projects):number;
     
 
     protected get MainImage(){

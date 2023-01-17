@@ -16,7 +16,7 @@ export class Projects extends Post {
         this.pdfImages = pdfImages;
     }
 
-    public save(model:typeof ProjectsModel ): string {
+    public save(model:typeof ProjectsModel ): number {
         try{
             const obj = {
                 mainImage:this.MainImage,
@@ -25,11 +25,11 @@ export class Projects extends Post {
                 links:this.Links,
                 pdfImages:this.pdfImages,
             }
-            model.create(obj);
-            return '[Sucess] New Skill add sucessfully';
+            async()=>{await model.create(obj)};
+            return 200;
         }
         catch{
-            return "[ERROR] Can't save this skill";   
+            return 500;   
         }
     }
 
