@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import GlobalStyle from './style/GlobalStyle';
 import MainPage from './page/MainPage';
 import Formations from './page/Formations';
@@ -7,10 +7,11 @@ import MainSkills from './page/MainSkills';
 import Projects from './page/Projects';
 
 export default function App(){
+  const location  = useLocation();
   return(
     <>
       <GlobalStyle/>
-      <Routes>
+      <Routes location={location} key={location.pathname}>
         <Route path='/' element={<MainPage/>}/>
         <Route path='/formations' element={<Formations/>}/>
         <Route path="/certifications" element={<Certifications/>}/>

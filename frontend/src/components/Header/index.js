@@ -3,6 +3,7 @@ import { Container, Button } from './style';
 export default function Header(){
     const links = [
         {name:'Experiências Profissionais', link:'#experience'},
+        {name:'Contatos', link:'#contacts'},
         {name:'Certificados', link:'#certificates-formations'},
         {name:'Formações', link:'#certificates-formations'},
         {name:'Principais Habilidades', link:'#mainskills-projects'},

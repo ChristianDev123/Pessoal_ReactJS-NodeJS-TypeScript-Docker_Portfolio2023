@@ -6,7 +6,7 @@ export default function CertificatesFormation(){
     return(
         <Container>
             <Wrapper>
-                <Link>
+                <Link to="/certifications">
                     <Button>
                         <Title>Certificados</Title>
                         <Description>Clique aqui para ver os certificados</Description>
@@ -15,7 +15,7 @@ export default function CertificatesFormation(){
                         </WrapperImage>
                     </Button>
                 </Link>
-                <Link>
+                <Link to="/formations">
                     <Button>
                         <WrapperImage>
                             <Image rotate src={Arrow}/>

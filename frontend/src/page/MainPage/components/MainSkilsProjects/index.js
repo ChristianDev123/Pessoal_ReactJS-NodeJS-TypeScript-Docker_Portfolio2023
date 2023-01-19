@@ -6,7 +6,7 @@ export default function MainSkillsProjects(){
     return(
         <Container>
             <Wrapper>
-                <Link>
+                <Link to="/projects">
                     <Button>
                         <Title>Projetos</Title>
                         <Description>Clique aqui para ver os certificados</Description>
@@ -15,13 +15,13 @@ export default function MainSkillsProjects(){
                         </WrapperImage>
                     </Button>
                 </Link>
-                <Link>
+                <Link to="/mainskills">
                     <Button>
                         <WrapperImage>
                             <Image rotate src={Arrow}/>
                         </WrapperImage>
                         <Description>Clique aqui para ver as formações</Description>
-                        <Title>Principais Tecnologias</Title>
+                        <Title>Principais Habilidades</Title>
                     </Button>
                 </Link>
             </Wrapper>

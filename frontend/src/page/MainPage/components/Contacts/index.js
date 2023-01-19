@@ -3,6 +3,7 @@ import Phone from '../../../../assets/phone.svg';
 import Gmail from '../../../../assets/gmail.svg';
 import Linkedin from '../../../../assets/linkedin.svg';
 import Github from '../../../../assets/github.svg';
+import Title from "../../../../components/Title";
 
 export default function Contacts(){
     const links = [
@@ -12,15 +13,18 @@ export default function Contacts(){
         {image: Github, name:"github.com/ChristianDev123", link:'github.com/ChristianDev123'},
     ]
     return(
-        <Container>
-            <Wrapper>
-                {links.map(({image, name, link},index)=>(
-                    <Contact key={index}>
-                        <Image src={image}/>
-                        <Link href={link}>{name}</Link>
-                    </Contact>
-                ))}
-            </Wrapper>
-        </Container>
+        <>
+            <Title msg="Contatos"/>
+            <Container>
+                <Wrapper>
+                    {links.map(({image, name, link},index)=>(
+                        <Contact key={index}>
+                            <Image src={image}/>
+                            <Link href={link}>{name}</Link>
+                        </Contact>
+                    ))}
+                </Wrapper>
+            </Container>
+        </>
     );
 }

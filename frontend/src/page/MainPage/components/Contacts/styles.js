@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.section`
     height: 100vh;
     padding: 3rem 4.5rem;
+    margin-bottom:1rem;
 `;
 
 export const Wrapper = styled.section`
