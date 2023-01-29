@@ -9,11 +9,11 @@ const certificationRepository = new InDatabaseCertificationRepository();
 
 export class CertificationController {
     static async index(req:Request,res:Response){
-        let {name} = req.query;
-        name = String(name);
+        let {title} = req.query;
+        title = String(title);
         let response;
         const getAllCertification = new GetAllCertifications(certificationRepository);
-        response = await getAllCertification.exec({name});
+        response = await getAllCertification.exec({title});
         if(response.length > 0) res.status(200).json(response);
         else res.status(404).json(response);
     }
@@ -29,9 +29,11 @@ export class CertificationController {
     
     static async update(req:Request,res:Response){
         let response:boolean = false;
-        const {oldData, newData} = req.body; 
+        let {oldData, newData} = req.body; 
+        oldData = JSON.parse(oldData);
+        newData = JSON.parse(newData);
         const updateCertification = new UpdateCertification(certificationRepository);
-        const OldData = new Certification({
+        oldData = new Certification({
             description:oldData.description,
             links:oldData.links,
             mainImage:oldData.mainImage,
@@ -39,7 +41,7 @@ export class CertificationController {
         },{
             pdfImages:oldData.pdfImage
         });
-        const NewData = new Certification({
+        newData = new Certification({
             description:newData.description,
             links:newData.links,
             mainImage:newData.mainImage,
@@ -47,8 +49,9 @@ export class CertificationController {
         },{
             pdfImages:newData.pdfImages
         });
-        response = await updateCertification.exec(OldData, NewData);
-        return response;
+        response = await updateCertification.exec(oldData, newData);
+        if(response) res.status(200).json({changed:true});
+        else res.status(304).json({changed:false});
     }
 
     static async delete(req:Request,res:Response){
@@ -57,8 +60,9 @@ export class CertificationController {
         let response:boolean = false;
         const deleteCertification = new DeleteCertification(certificationRepository);
         const getAllCertification = new GetAllCertifications(certificationRepository);  
-        const certificationToDelete = await getAllCertification.exec({name:title});
+        const certificationToDelete = await getAllCertification.exec({title});
         response = await deleteCertification.exec(certificationToDelete[0]);
-        return response;
+        if(response) res.status(204).json({excluded:true});
+        else res.status(500).json({excluded:false});
     }
 }

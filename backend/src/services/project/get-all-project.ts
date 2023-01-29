@@ -2,7 +2,7 @@ import { Project } from "../../entities/project";
 import { ProjectRepository } from "../../repositories/project-repository";
 
 interface ProjectRepositoryRequest {
-    name: string|undefined;
+    title: string|undefined;
 }
 
 type ProjectRepositoryResponse = Project[];
@@ -12,9 +12,9 @@ export class GetAllProjects {
         private projectRepository: ProjectRepository
     ){}
 
-    public async exec({name}:ProjectRepositoryRequest): Promise<ProjectRepositoryResponse> {
+    public async exec({title}:ProjectRepositoryRequest): Promise<ProjectRepositoryResponse> {
         let response: ProjectRepositoryResponse; 
-        response = await this.projectRepository.index(name);
+        response = await this.projectRepository.index(title);
         return response;
     }
 }
