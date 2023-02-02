@@ -10,7 +10,7 @@ export class DeleteCertification {
 
     public async exec(data:Certification):Promise<boolean>{
         let response:boolean = false;
-        if(ExistenceVerification(data, await this.certificationRepository.index())){
+        if(ExistenceVerification(data, await this.certificationRepository.index('undefined'))){
             response = await this.certificationRepository.delete(data.title);
         }
         return response;

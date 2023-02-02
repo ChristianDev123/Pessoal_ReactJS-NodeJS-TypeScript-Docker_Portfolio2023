@@ -29,7 +29,9 @@ export class CertificationController {
     
     static async update(req:Request,res:Response){
         let response:boolean = false;
-        let {oldData, newData} = req.body; 
+        let {oldData, newData} = req.body;
+        oldData = JSON.stringify(oldData);
+        newData = JSON.stringify(newData); 
         oldData = JSON.parse(oldData);
         newData = JSON.parse(newData);
         const updateCertification = new UpdateCertification(certificationRepository);

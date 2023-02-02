@@ -9,7 +9,7 @@ export class UpdateFormation {
 
     public async exec(oldData:Formation, newData: Formation):Promise<boolean>{
         let response: boolean = false;
-        if(ExistenceVerification(oldData, await this.formationRepository.index())){
+        if(ExistenceVerification(oldData, await this.formationRepository.index('undefined'))){
             response = await this.formationRepository.update(oldData.title, newData);
         }
         return response;

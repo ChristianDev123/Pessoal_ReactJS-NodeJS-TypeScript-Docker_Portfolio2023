@@ -10,7 +10,7 @@ export class DeleteFormation {
 
     public async exec(data:Formation):Promise<boolean>{
         let response:boolean = false;
-        if(ExistenceVerification(data, await this.formationRepository.index())){
+        if(ExistenceVerification(data, await this.formationRepository.index('undefined'))){
             response = await this.formationRepository.delete(data.title);
         }
         return response;

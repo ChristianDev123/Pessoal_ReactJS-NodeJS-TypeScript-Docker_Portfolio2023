@@ -10,7 +10,7 @@ export class DeleteProject {
 
     public async exec(data:Project):Promise<boolean>{
         let response:boolean = false;
-        if(ExistenceVerification(data, await this.projectRepository.index())){
+        if(ExistenceVerification(data, await this.projectRepository.index('undefined'))){
             response = await this.projectRepository.delete(data.title);
         }
         return response;

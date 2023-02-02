@@ -49,7 +49,7 @@ export class InDatabaseCertificationRepository implements CertificationRepositor
                 pdfImage,
                 title
             },{
-                where:{titleOld}
+                where:{title:titleOld}
             })
             return true;
         }catch(err){

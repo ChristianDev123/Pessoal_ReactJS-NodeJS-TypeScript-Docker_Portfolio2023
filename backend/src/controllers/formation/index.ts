@@ -35,6 +35,8 @@ export class FormationController {
     
     static async update(req:Request,res:Response){
         let { oldData, newData } = req.body;
+        oldData = JSON.stringify(oldData);
+        newData = JSON.stringify(newData);
         oldData = JSON.parse(oldData);
         newData = JSON.parse(newData);
         let response:boolean = false;

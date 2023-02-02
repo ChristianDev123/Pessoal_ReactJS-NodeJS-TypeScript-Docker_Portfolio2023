@@ -9,7 +9,7 @@ export class UpdateCertification {
 
     public async exec(oldData:Certification, newData: Certification):Promise<boolean>{
         let response: boolean = false;
-        if(ExistenceVerification(oldData, await this.certificationRepository.index())){
+        if(ExistenceVerification(oldData, await this.certificationRepository.index('undefined'))){
             response = await this.certificationRepository.update(oldData.title, newData);
         }
         return response;

@@ -24,7 +24,7 @@ export default dbConfig.define("certifications",{
         type: DataTypes.STRING,
         allowNull: false,
     },
-    timeExperience:{
+    pdfImages:{
         type: DataTypes.STRING,
         allowNull: true,
     }

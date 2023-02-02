@@ -48,7 +48,7 @@ export class InDatabaseFormationRepository implements FormationRepository{
                 pdfImages,
                 title
             },{
-                where:{titleOld}
+                where:{title:titleOld}
             })
             return true;
         }catch(err){
