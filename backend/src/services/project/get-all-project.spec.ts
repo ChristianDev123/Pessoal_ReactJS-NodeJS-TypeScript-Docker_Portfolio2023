@@ -22,7 +22,7 @@ describe('getting projects', () => {
             title:'teste1',
         });
         const projects = new GetAllProjects(projectRepository);
-        const certificationArray = await projects.exec({name:undefined});
+        const certificationArray = await projects.exec({title:undefined});
         expect(certificationArray).toBeTypeOf('object');
         expect(certificationArray.length).toBe(2);
     })
@@ -38,7 +38,7 @@ describe('getting projects', () => {
             title:'teste',
         });
         const projects = new GetAllProjects(projectRepository);
-        const certificationArray = await projects.exec({name:'teste'});
+        const certificationArray = await projects.exec({title:'teste'});
         expect(certificationArray.length).toEqual(1);
     })
 });

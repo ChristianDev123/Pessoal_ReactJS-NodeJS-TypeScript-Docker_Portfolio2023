@@ -1,13 +1,11 @@
 import { Certification } from "../../entities/certification";
 import { CertificationRepository } from "../certification-repository";
-import CertificationTable from '../../models/certification';
-const certificationTable = new CertificationTable();
-const certEstructure = certificationTable.estructure();
+import certEstructure  from '../../models/certification';
 
 export class InDatabaseCertificationRepository implements CertificationRepository {
     async create({ description, links, mainImage, pdfImage, title }: Certification): Promise<boolean> {
         try{
-           await certEstructure.create({
+            await certEstructure.create({
                 description,
                 links,
                 mainImage,
@@ -24,7 +22,18 @@ export class InDatabaseCertificationRepository implements CertificationRepositor
 
     async index(title?: string | undefined): Promise<Certification[]> {
         try{
-            return await certEstructure.findAll(title&&{where:title});
+            let response:Certification[]; 
+            const filter = title !== 'undefined' ? {where:{title}}: {};
+            let arr = await certEstructure.findAll(filter);
+            response = arr.map((data)=>new Certification({
+                description:String(data.get("description")),
+                links:String(data.get("links")),
+                mainImage:String(data.get("mainImage")),
+                title:String(data.get("title"))
+            },{
+                pdfImages:String(data.get("pdfImages"))
+            }))
+            return response;
         }catch(err){
             if(err) console.log(err);
             return [];
@@ -51,7 +60,7 @@ export class InDatabaseCertificationRepository implements CertificationRepositor
     
     async delete(title: string): Promise<boolean> {
         try{
-            await certEstructure.destroy({where:title});
+            await certEstructure.destroy({where:{title}});
             return true;
         }catch(err){
             if(err) console.log(err);
@@ -60,7 +69,7 @@ export class InDatabaseCertificationRepository implements CertificationRepositor
     }
     
     async find({title,description}: Certification): Promise<boolean> {
-        if(await certEstructure.find({where:{title,description}})) return true;
+        if(await certEstructure.findOne({where:{title,description}})) return true;
         else return false;
     }
 }

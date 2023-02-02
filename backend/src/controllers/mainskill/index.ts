@@ -35,6 +35,8 @@ export class MainSkillController {
     
     static async update(req:Request,res:Response){
         let { oldData, newData } = req.body;
+        oldData = JSON.stringify(oldData);
+        newData = JSON.stringify(newData);
         oldData = JSON.parse(oldData);
         newData = JSON.parse(newData);
         oldData = new MainSkill({
@@ -46,12 +48,12 @@ export class MainSkillController {
             timeExperience:oldData.timeExperience
         });
         newData = new MainSkill({
-            description:oldData.description,
-            links:oldData.links,
-            mainImage:oldData.mainImage,
-            title:oldData.title
+            description:newData.description,
+            links:newData.links,
+            mainImage:newData.mainImage,
+            title:newData.title
         },{
-            timeExperience:oldData.timeExperience
+            timeExperience:newData.timeExperience
         })
         let response:boolean = false;
         const updateMainSkill = new UpdateMainSkill(mainSkillRepository);
@@ -68,7 +70,7 @@ export class MainSkillController {
         const getAllMainSkill = new GetAllMainSkills(mainSkillRepository);
         const mainSkillToDelete = await getAllMainSkill.exec({title});
         response = await deleteMainSkill.exec(mainSkillToDelete[0]);
-        if(response) res.status(204).json({excluded:true});
+        if(response) res.status(200).json({excluded:true});
         else res.status(500).json({excluded:false});
     }
 }

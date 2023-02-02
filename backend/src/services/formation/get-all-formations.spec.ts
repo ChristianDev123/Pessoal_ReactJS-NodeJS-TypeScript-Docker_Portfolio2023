@@ -22,7 +22,7 @@ describe('getting certifications', () => {
             title:'teste1',
         });
         const certifications = new GetAllFormations(formationsRepository);
-        const certificationArray = await certifications.exec({name:undefined});
+        const certificationArray = await certifications.exec({title:undefined});
         expect(certificationArray).toBeTypeOf('object');
         expect(certificationArray.length).toBe(2);
     })
@@ -38,7 +38,7 @@ describe('getting certifications', () => {
             title:'teste',
         });
         const certifications = new GetAllFormations(formationsRepository);
-        const certificationArray = await certifications.exec({name:'teste'});
+        const certificationArray = await certifications.exec({title:'teste'});
         expect(certificationArray.length).toEqual(1);
     })
 });

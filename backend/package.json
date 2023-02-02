@@ -7,7 +7,7 @@
   "author": "ChristianDev123",
   "license": "MIT",
   "scripts": {
-    "start": "npx tsc",
+    "start": "npx tsc && node src/index.js",
     "test": "vitest watch"
   },
   "devDependencies": {

@@ -1,14 +1,11 @@
 import { Request, Response } from "express";
+import { Formation } from "../../entities/formation";
 import { InDatabaseFormationRepository } from "../../repositories/in-database/in-database-formation-repository";
 import { CreateFormation } from "../../services/formation/create-formation";
 import { DeleteFormation } from "../../services/formation/delete-formation";
 import { GetAllFormations } from "../../services/formation/get-all-formations";
 import { UpdateFormation } from "../../services/formation/update-formations";
-import FormationTable from "../../models/formation";
-import { Formation } from "../../entities/formation";
 const formationRepository = new InDatabaseFormationRepository();
-const formationTable = new FormationTable();
-const formEstructure = formationTable.estructure();
 
 export class FormationController {
     static async index(req:Request,res:Response){

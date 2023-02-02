@@ -10,7 +10,7 @@ export class DeleteMainSkill {
 
     public async exec(data:MainSkill):Promise<boolean>{
         let response:boolean = false;
-        if(ExistenceVerification(data, await this.mainSkillRepository.index())){
+        if(ExistenceVerification(data, await this.mainSkillRepository.index('undefined'))){
             response = await this.mainSkillRepository.delete(data.title);
         }
         return response;

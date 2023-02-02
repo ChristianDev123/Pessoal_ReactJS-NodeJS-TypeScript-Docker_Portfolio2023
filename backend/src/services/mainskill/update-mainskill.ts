@@ -9,7 +9,7 @@ export class UpdateMainSkill {
 
     public async exec(oldData:MainSkill, newData: MainSkill):Promise<boolean>{
         let response: boolean = false;
-        if(ExistenceVerification(oldData, await this.mainSkillRepository.index())){
+        if(ExistenceVerification(oldData, await this.mainSkillRepository.index('undefined'))){
             response = await this.mainSkillRepository.update(oldData.title, newData);
         }
         return response;

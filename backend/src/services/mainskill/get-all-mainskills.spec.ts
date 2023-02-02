@@ -22,7 +22,7 @@ describe('getting mainskills', () => {
             title:'teste1',
         });
         const mainskills = new GetAllMainSkills(mainSkillRepository);
-        const mainskillArray = await mainskills.exec({name:undefined});
+        const mainskillArray = await mainskills.exec({title:undefined});
         expect(mainskillArray).toBeTypeOf('object');
         expect(mainskillArray.length).toBe(2);
     })
@@ -38,7 +38,7 @@ describe('getting mainskills', () => {
             title:'teste',
         });
         const mainskills = new GetAllMainSkills(mainSkillRepository);
-        const mainskillArray = await mainskills.exec({name:'teste'});
+        const mainskillArray = await mainskills.exec({title:'teste'});
         expect(mainskillArray.length).toEqual(1);
     })
 });

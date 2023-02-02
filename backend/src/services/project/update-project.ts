@@ -9,7 +9,7 @@ export class UpdateProject {
 
     public async exec(oldData:Project, newData: Project):Promise<boolean>{
         let response: boolean = false;
-        if(ExistenceVerification(oldData, await this.projectRepository.index())){
+        if(ExistenceVerification(oldData, await this.projectRepository.index('undefined'))){
             response = await this.projectRepository.update(oldData.title, newData);
         }
         return response;

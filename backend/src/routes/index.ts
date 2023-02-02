@@ -3,15 +3,14 @@ import { CertificationController } from "../controllers/certification";
 import { FormationController } from "../controllers/formation";
 import { MainSkillController } from "../controllers/mainskill";
 import { ProjectController } from "../controllers/project";
-import { ConfigDatabase } from "../config";
+import dbConfig from "../config";
 const route = Router();
 
 
 // stater route
 
 route.get('/config',async(req:Request, res:Response)=>{
-    const configDb = new ConfigDatabase();
-    await configDb.connection().sync({force:false});
+    dbConfig.sync({force:true});
     res.status(200).json({msg:"database created"})
 });
 
