@@ -36,7 +36,6 @@ export default function MainPage(){
                 <div id="mainskills-projects">
                     <MainSkillsProjects/>
                 </div>
-                {console.log(scrollPosition)}
             </Main>
         </>
     );

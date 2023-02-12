@@ -1,15 +1,21 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import GenericCard from "../../components/GenericCard";
 import { CardSection, Container, Title, TitleSection, TitleWrapper } from "./style";
-import DogTest from '../../assets/dogtest.jpg'
 
 export default function Certifications(){
-    const [data, setData] = useState([
-        {image:DogTest, title:'Teste', links:['teste','teste','teste'], description:"Teste du teste de teste"},
-        {image:DogTest, title:'Teste', links:['teste','teste','teste'], description:"Teste du teste de teste"},
-        {image:DogTest, title:'Teste', links:['teste','teste','teste'], description:"Teste du teste de teste"},
-        {image:DogTest, title:'Teste', links:['teste','teste','teste'], description:"Teste du teste de teste"},
-    ]);
+    const [data, setData] = useState([]);
+    
+    useEffect(()=>{
+        //axios.get(`${process.env.REACT_APP_BACKEND_HOST}/certification`)
+        axios.get("http://christianproject.com.br:3000/certification")
+        .then((response)=>{
+            response.data.forEach(({attributes, attributeCertification})=>{
+                setData([...data, {...attributes, attributeCertification}]);
+            });
+        });
+    },[]);
+
     return(
         <Container>
             <TitleSection>
@@ -18,8 +24,8 @@ export default function Certifications(){
                 </TitleWrapper>
             </TitleSection>
             <CardSection>
-                {data.map(({title, description, image, links})=>(
-                    <GenericCard title={title} image={image} links={links} description={description}/>
+                {data.map(({title, description, image, links},index)=>(
+                    <GenericCard key={index} title={title} image={image} links={links} description={description}/>
                 ))}
             </CardSection>
         </Container>

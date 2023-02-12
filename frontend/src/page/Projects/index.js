@@ -1,25 +1,21 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import GenericDescCard from "../../components/GenericDescCard";
 import { CardSection, Container, Title, TitleSection, TitleWrapper } from "./styles";
-import DogTeste from '../../assets/dogtest.jpg';
-import { useState } from "react";
 
 export default function Projects(){
-    const [data, setData] = useState([
-        {title:`Dogao du Teste`, description:`
-        oia u teste aiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-        iiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-        iiiiiiiiiiiiiiiiiiiiiiiiiii`, image:DogTeste},
-        {title:`Dogao du Teste`, description:`oia u teste aiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-        iiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-        iiiiiiiiiiiiiiiiiiiiiiiiiii`, image:DogTeste},
-        {title:`Dogao du Teste`, description:`oia u teste aiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-        iiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-        iiiiiiiiiiiiiiiiiiiiiiiiiii`, image:DogTeste},
-        {title:`Dogao du Teste`, description:`
-        oia u teste aiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-        iiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-        iiiiiiiiiiiiiiiiiiiiiiiiiii`, image:DogTeste},
-    ]);
+    const [data, setData] = useState([]);
+
+    useEffect(()=>{
+        //axios.get(`${process.env.REACT_APP_BACKEND_HOST}/project`)
+        axios.get('https://christianproject.com.br:3000/project')
+        .then((response)=>{
+            response.data.map(({attributes,attributeProject})=>{
+                setData([...data, {...attributeProject, ...attributes}]);
+            });
+        });
+    },[])
+    
     return(
         <Container>
             <TitleSection>

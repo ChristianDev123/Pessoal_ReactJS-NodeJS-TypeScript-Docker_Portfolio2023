@@ -19,12 +19,15 @@ export class CertificationController {
     }
     
     static async create(req:Request,res:Response){
-        const { description, links, mainImage, pdfImages, title } = req.body;
+        console.log(req.file);
+        console.log(req.files);
+        /*
+        let { description, links, mainImage, pdfImages, title } = req.body;
         let response:boolean = false;
         const createCertification = new CreateCertification(certificationRepository);
         response = await createCertification.exec({ description, links, mainImage, pdfImages, title });
         if(response) res.status(201).json({created:true});
-        else res.status(501).json({created:false});
+        else res.status(501).json({created:false});*/
     }
     
     static async update(req:Request,res:Response){
@@ -46,7 +49,7 @@ export class CertificationController {
         newData = new Certification({
             description:newData.description,
             links:newData.links,
-            mainImage:newData.mainImage,
+            mainImage:req.file?.path || '',
             title:newData.title
         },{
             pdfImages:newData.pdfImages

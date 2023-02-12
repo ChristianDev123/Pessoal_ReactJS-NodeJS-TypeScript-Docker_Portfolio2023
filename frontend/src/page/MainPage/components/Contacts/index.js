@@ -20,7 +20,7 @@ export default function Contacts(){
                     {links.map(({image, name, link},index)=>(
                         <Contact key={index}>
                             <Image src={image}/>
-                            <Link href={link}>{name}</Link>
+                            <Link href={`https://${link}`} target="_blank">{name}</Link>
                         </Contact>
                     ))}
                 </Wrapper>
